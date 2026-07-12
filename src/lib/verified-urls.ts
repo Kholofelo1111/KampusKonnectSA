@@ -31,10 +31,10 @@ export const universityOverrides: Record<string, UrlOverride> = {
     ],
   },
   uj: {
-    applyUrl: "https://student.uj.ac.za/status.aspx",
+    applyUrl: "https://www.uj.ac.za/studyatuj/apply/",
     prospectusUrl: "https://www.uj.ac.za/study-at-uj/",
     applyInstructions: [
-      "Visit student.uj.ac.za/status.aspx",
+      "Visit www.uj.ac.za/studyatuj/apply",
       "Click 'New User Registration'",
       "Enter your ID/passport and create a profile",
       "Select your qualification (max 3 choices)",
