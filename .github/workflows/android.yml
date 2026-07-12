@@ -20,7 +20,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install -D @capacitor/assets
+
+      - name: Generate App Icons
+        run: npx capacitor-assets generate
 
       - name: Build Next.js
         env:
