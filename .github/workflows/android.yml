@@ -24,8 +24,8 @@ jobs:
           npm ci
           npm install -D @capacitor/assets
 
-      - name: Generate App Icons
-        run: npx capacitor-assets generate
+      - name: Generate App Assets
+        run: npx @capacitor/assets generate
 
       - name: Build Next.js
         env:
