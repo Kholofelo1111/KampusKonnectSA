@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -46,7 +47,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <ChatWidget />
           <MobileNav />
         </Providers>
-      </body>
+          <Analytics />
+  </body>
     </html>
   );
 }
