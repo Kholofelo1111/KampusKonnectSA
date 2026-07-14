@@ -299,7 +299,7 @@ export default function DashboardPage() {
                 { href: "/qualify", label: "Check what you qualify for", icon: Target, color: "text-kk-blue" },
                 { href: "/feed", label: "Browse opportunity feed", icon: Briefcase, color: "text-purple-500" },
                 { href: "/institutions", label: "Find institutions", icon: GraduationCap, color: "text-kk-green" },
-                { href: "/cv-builder", label: "Build your CV", icon: Award, color: "text-orange-500" },
+                { href: "/feed", label: "Build your CV", icon: Award, color: "text-orange-500" },
                 { href: "/ai", label: "Ask AI Coach", icon: Sparkles, color: "text-pink-500" },
               ].map((a) => {
                 const Icon = a.icon;
