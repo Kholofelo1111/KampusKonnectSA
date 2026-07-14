@@ -498,34 +498,3 @@ export const jobCategories = [
   "Cleaning", "Healthcare", "IT", "Mining", "Hospitality", "Warehouse",
   "Remote Jobs", "Graduate Jobs",
 ];
-
-export const officialJobPortals = [
-  {
-    id: "jp1",
-    name: "Careers24",
-    description: "Search thousands of verified jobs across South Africa.",
-    url: "https://www.careers24.com/",
-    category: "Job Portal",
-  },
-  {
-    id: "jp2",
-    name: "Job Mail",
-    description: "Browse jobs by city and province.",
-    url: "https://www.jobmail.co.za/jobs/port-elizabeth",
-    category: "Job Portal",
-  },
-  {
-    id: "jp3",
-    name: "Employment Services of South Africa (ESSA)",
-    description: "Official Department of Employment and Labour job portal.",
-    url: "https://essa.labour.gov.za/EssaOnline/WebBeans/",
-    category: "Government",
-  },
-  {
-    id: "jp4",
-    name: "SimplyHired South Africa",
-    description: "Find local and remote job opportunities.",
-    url: "https://za.simplyhired.com/search?q=online+jobs&l=port+elizabeth%2C+eastern+cape",
-    category: "Remote Jobs",
-  },
-];
