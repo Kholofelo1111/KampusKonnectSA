@@ -91,7 +91,7 @@ fetch("/api/opportunities")
       filtered = filtered.filter((o) => !!o.linkedinUrl);
     }
     return sortOpportunities(filtered, sort);
-  }, [type, province, category, search, sort, linkedinOnly]);
+  }, [opportunityFeed, type, province, category, search, sort, linkedinOnly]);
 
   // Reset pagination when filters change
   const visible = filtered.slice(0, visibleCount);
