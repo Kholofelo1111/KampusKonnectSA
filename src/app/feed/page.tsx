@@ -105,7 +105,7 @@ fetch("/api/opportunities")
       internship: opportunityFeed.filter((o) => o.type === "internship").length,
       bursary: opportunityFeed.filter((o) => o.type === "bursary").length,
     };
-  }, []);
+  }, [opportunityFeed]);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -114,7 +114,7 @@ fetch("/api/opportunities")
       if (o.category) cats.add(o.category);
     });
     return ["All Categories", ...Array.from(cats).sort()];
-  }, []);
+  }, [opportunityFeed]);
 
   return (
     <>
