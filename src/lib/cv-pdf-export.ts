@@ -18,6 +18,8 @@
 // labels in the PDF — which is also better for ATS parsing anyway.
 // ============================================================
 import jsPDF from "jspdf";
+import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Share } from "@capacitor/share";
 import type { CvData, TemplateKey } from "@/components/cv-templates/types";
 
 const PAGE_W = 210;
@@ -534,18 +536,19 @@ export function generateCvPdf(data: CvData, template: TemplateKey): void {
 
   const safeName = (data.fullName || "CV").replace(/[^a-z0-9]+/gi, "_");
   
-const pdfBlob = doc.output("blob");
-const url = URL.createObjectURL(pdfBlob);
+const pdfData = doc.output("datauristring").split(",")[1];
 
-const a = document.createElement("a");
-a.href = url;
-a.download = `${safeName}_${FILE_LABEL[template]}.pdf`;
-document.body.appendChild(a);
-a.click();
-
-setTimeout(() => {
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}, 1000);
+Filesystem.writeFile({
+  path: `${safeName}_${FILE_LABEL[template]}.pdf`,
+  data: pdfData,
+  directory: Directory.Documents,
+  recursive: true,
+}).then(async (result) => {
+  await Share.share({
+    title: "CV",
+    text: "Your CV is ready.",
+    url: result.uri,
+  });
+}).catch(console.error);
 
 }
