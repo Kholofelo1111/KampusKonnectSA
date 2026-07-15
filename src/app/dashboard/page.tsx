@@ -319,7 +319,18 @@ export default function DashboardPage() {
           </div>
         </div>
 
+
+        <div className="my-6">
+          <Link
+            href="/cv-builder"
+            className="block rounded-xl bg-blue-600 p-4 text-center font-bold text-white"
+          >
+            TEST CV BUTTON
+          </Link>
+        </div>
+
         {/* Recent applications */}
+
         <div className="mt-6 rounded-2xl border border-kk-navy/5 bg-white p-6 shadow-sm">
           <h2 className="flex items-center gap-2 font-display text-lg font-bold text-kk-navy">
             <FileText className="h-5 w-5 text-kk-blue" /> Recent Applications

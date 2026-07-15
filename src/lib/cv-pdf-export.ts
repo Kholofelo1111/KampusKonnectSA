@@ -533,5 +533,19 @@ export function generateCvPdf(data: CvData, template: TemplateKey): void {
   }
 
   const safeName = (data.fullName || "CV").replace(/[^a-z0-9]+/gi, "_");
-  doc.save(`${safeName}_${FILE_LABEL[template]}.pdf`);
+  
+const pdfBlob = doc.output("blob");
+const url = URL.createObjectURL(pdfBlob);
+
+const a = document.createElement("a");
+a.href = url;
+a.download = `${safeName}_${FILE_LABEL[template]}.pdf`;
+document.body.appendChild(a);
+a.click();
+
+setTimeout(() => {
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}, 1000);
+
 }
