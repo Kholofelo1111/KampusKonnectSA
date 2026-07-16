@@ -174,7 +174,13 @@ export default async function OpportunityPage({ params }: Props) {
       inst ? { website: inst.website, name: inst.name, phone: inst.phone, email: inst.email } : undefined
     );
   } else {
-    verified = getVerifiedUrls("opportunity", id);
+    verified = feedFallback
+      ? {
+          applyUrl: feedFallback.applyUrl,
+          prospectusUrl: undefined,
+          applyInstructions: feedFallback.howToApply ?? [],
+        }
+      : getVerifiedUrls("opportunity", id);
   }
 
   // Prefer verified URL over the old link; if this came from the
