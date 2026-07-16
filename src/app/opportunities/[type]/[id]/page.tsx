@@ -11,6 +11,9 @@ import { OpportunityDetail } from "@/components/OpportunityDetail";
 import { getVerifiedUrls } from "@/lib/verified-urls";
 import { allInstitutions, publicTvets, privateColleges, privateUniversities } from "@/lib/institutions";
 import { opportunityFeed } from "@/lib/opportunities";
+import { db } from "@/db";
+import { opportunities } from "@/db/schema";
+import { eq } from "drizzle-orm";
 
 type Props = {
   params: Promise<{ type: string; id: string }>;
@@ -157,6 +160,38 @@ export default async function OpportunityPage({ params }: Props) {
           { label: "Closing Date", value: feedFallback.closingDate },
         ],
         requirements: feedFallback.requirements,
+      };
+    }
+  }
+
+  // Database fallback for imported opportunities
+  if (!content) {
+    const dbOpportunity = await db.query.opportunities.findFirst({
+      where: eq(opportunities.id, id),
+    });
+
+    if (dbOpportunity) {
+      content = {
+        title: dbOpportunity.title,
+        subtitle: dbOpportunity.company,
+        description: dbOpportunity.description ?? "",
+        deadline: dbOpportunity.closingDate,
+        metaItems: [
+          { label: "Location", value: dbOpportunity.location },
+          ...(dbOpportunity.salary ? [{ label: "Salary/Amount", value: dbOpportunity.salary }] : []),
+          { label: "Closing Date", value: dbOpportunity.closingDate },
+        ],
+        requirements: dbOpportunity.requirements ?? [],
+      };
+
+      feedFallback = {
+        ...dbOpportunity,
+        type: dbOpportunity.type as any,
+        email: dbOpportunity.email ?? undefined,
+        category: dbOpportunity.category ?? undefined,
+        salary: dbOpportunity.salary ?? undefined,
+        requirements: dbOpportunity.requirements ?? [],
+        description: dbOpportunity.description ?? "",
       };
     }
   }
