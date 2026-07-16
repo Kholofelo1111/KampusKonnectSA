@@ -77,6 +77,56 @@ export const opportunityFeed: Opportunity[] = [
   },
 
   // ---- LEARNERSHIPS ----
+
+  {
+    id: "op-signa-2026",
+    type: "learnership",
+    title: "Signa Academy Learnership Programme 2026",
+    company: "Signa Academy",
+    location: "Nationwide",
+    province: "National",
+    closingDate: "2026-12-31",
+    postedDate: "2026-07-16",
+    applyUrl: "https://linkinn.co.za/signa-learnership-programme-2026/",
+    salary: "R3,200/month",
+    description: "Entry-level learnership for unemployed youth with Grade 12.",
+    requirements: ["Grade 12", "South African citizen"],
+    isVerified: true,
+  },
+
+  {
+    id: "op-avbob-2026",
+    type: "learnership",
+    title: "AVBOB & INSETA Learnership Programme 2026",
+    company: "AVBOB",
+    location: "Nationwide",
+    province: "National",
+    closingDate: "2026-12-31",
+    postedDate: "2026-07-16",
+    applyUrl: "https://linkinn.co.za/avbob-learnership-programme-2026/",
+    salary: "R5,600/month",
+    description: "Insurance sector learnership for unemployed youth.",
+    requirements: ["Grade 12", "18-35 years"],
+    isVerified: true,
+  },
+
+  {
+    id: "op-ilearn-2026",
+    type: "learnership",
+    title: "iLearn Learnership Programme 2026",
+    company: "iLearn",
+    location: "Nationwide",
+    province: "National",
+    closingDate: "2026-12-31",
+    postedDate: "2026-07-16",
+    applyUrl: "https://linkinn.co.za/ilearn-learnership-programme-2026/",
+    salary: "R5,700/month",
+    description: "Online learnership opportunity for unemployed youth.",
+    requirements: ["Grade 10/11/12"],
+    isVerified: true,
+  },
+
+
   // ---- YES4YOUTH (Top of learnerships — official govt portal) ----
   {
     id: "op-yes-main", type: "learnership",
