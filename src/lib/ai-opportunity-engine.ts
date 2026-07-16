@@ -26,8 +26,14 @@ export async function syncOpportunities(
   let duplicates = 0;
 
   for (const record of records) {
+    const id =
+      (record as any).id ??
+      record.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
     const exists = await db.query.opportunities.findFirst({
-      where: eq(opportunities.id, record.id),
+      where: eq(opportunities.id, id),
     });
 
     if (exists) {
@@ -37,6 +43,7 @@ export async function syncOpportunities(
 
     await db.insert(opportunities).values({
       ...record,
+      id,
       isVerified: true,
       isActive: true,
     });
