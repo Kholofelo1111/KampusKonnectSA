@@ -1,12 +1,29 @@
 import { NextResponse } from "next/server";
-import { opportunityFeed } from "@/lib/opportunities";
 import { syncOpportunities } from "@/lib/ai-opportunity-engine";
 
-export async function POST() {
-  const result = await syncOpportunities(opportunityFeed);
+export async function POST(request: Request) {
+  try {
+    const records = await request.json();
 
-  return NextResponse.json({
-    success: true,
-    ...result,
-  });
+    if (!Array.isArray(records)) {
+      return NextResponse.json(
+        { success: false, error: "Expected an array of opportunities." },
+        { status: 400 }
+      );
+    }
+
+    const result = await syncOpportunities(records);
+
+    return NextResponse.json({
+      success: true,
+      ...result,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      { success: false, error: "Import failed." },
+      { status: 500 }
+    );
+  }
 }
