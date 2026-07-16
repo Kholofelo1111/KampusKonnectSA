@@ -37,6 +37,16 @@ export async function syncOpportunities(
     });
 
     if (exists) {
+      await db
+        .update(opportunities)
+        .set({
+          ...record,
+          id,
+          isVerified: true,
+          isActive: true,
+        })
+        .where(eq(opportunities.id, id));
+
       duplicates++;
       continue;
     }

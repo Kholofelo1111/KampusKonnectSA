@@ -10,7 +10,127 @@
     "salary": "R3,200/month",
     "applyUrl": "https://linkinn.co.za/signa-learnership-programme-2026/",
     "description": "Entry-level learnership.",
-    "requirements": ["Grade 12"],
+    "requirements": [
+      "Grade 12"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "Traffic Learner Officer Learnership Programme 2026",
+    "company": "Traffic Department",
+    "type": "learnership",
+    "location": "South Africa",
+    "province": "National",
+    "closingDate": "2026-12-31",
+    "postedDate": "2026-07-15",
+    "salary": "Stipend Not Specified",
+    "applyUrl": "https://linkinn.co.za/traffic-learner-officer-learnership-programme/",
+    "description": "Traffic Learner Officer Learnership.",
+    "requirements": [
+      "Grade 12",
+      "18-35 years",
+      "Driver's Licence",
+      "No criminal record"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "SAPS Security Officers (26 Posts)",
+    "company": "South African Police Service",
+    "type": "job",
+    "location": "South Africa",
+    "province": "National",
+    "closingDate": "2026-12-31",
+    "postedDate": "2026-07-15",
+    "salary": "R170,226/year",
+    "applyUrl": "https://morejobapply.com/saps-is-hiring-26-security-officers-in-2026/",
+    "description": "Permanent Security Officer vacancies.",
+    "requirements": [
+      "Grade 10",
+      "PSIRA Grade C"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "Fraser Alexander Assistant General Worker",
+    "company": "Fraser Alexander",
+    "type": "job",
+    "location": "Gauteng",
+    "province": "Gauteng",
+    "closingDate": "2026-07-16",
+    "postedDate": "2026-07-15",
+    "salary": "Market Related",
+    "applyUrl": "https://morejobapply.com/assistant-general-worker-vacancy-2026-at-fraser-alexander-gauteng-jobs/",
+    "description": "Assistant General Worker contract opportunity.",
+    "requirements": [
+      "Grade 12",
+      "1 year experience"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "SASSA TVET Work Integrated Learning 2026",
+    "company": "SASSA",
+    "type": "learnership",
+    "location": "Gauteng",
+    "province": "Gauteng",
+    "closingDate": "2026-07-30",
+    "postedDate": "2026-07-15",
+    "salary": "R5,865.25/month",
+    "applyUrl": "https://morejobapply.com/sassa-learnerships-2026-tvet-work-integrated/",
+    "description": "Work Integrated Learning for TVET graduates.",
+    "requirements": [
+      "N6 National Certificate"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "AVBOB & INSETA Learnership Programme 2026",
+    "company": "AVBOB",
+    "type": "learnership",
+    "location": "South Africa",
+    "province": "National",
+    "closingDate": "2026-12-31",
+    "postedDate": "2026-07-16",
+    "salary": "R5,600/month",
+    "applyUrl": "https://linkinn.co.za/avbob-learnership-programme-2026/",
+    "description": "Insurance Sector learnership.",
+    "requirements": [
+      "Grade 12",
+      "18-35 years"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "iLearn Learnership Programme 2026",
+    "company": "iLearn",
+    "type": "learnership",
+    "location": "South Africa",
+    "province": "National",
+    "closingDate": "2026-12-31",
+    "postedDate": "2026-07-16",
+    "salary": "R5,700/month",
+    "applyUrl": "https://linkinn.co.za/ilearn-learnership-programme-2026/",
+    "description": "Online learnership opportunity.",
+    "requirements": [
+      "Grade 10, 11 or 12"
+    ],
+    "isVerified": true
+  },
+  {
+    "title": "Department of Agriculture General Workers (16 Posts)",
+    "company": "Department of Agriculture and Rural Development",
+    "type": "job",
+    "location": "Limpopo",
+    "province": "Limpopo",
+    "closingDate": "2026-08-07",
+    "postedDate": "2026-07-16",
+    "salary": "R144,024/year",
+    "applyUrl": "https://www.dpsa.gov.za/dpsa2g/vacancies.asp",
+    "description": "General Worker (Redline Gate Guard/Fence Patroller).",
+    "requirements": [
+      "ABET Level 2"
+    ],
     "isVerified": true
   }
 ]
