@@ -19,6 +19,7 @@ import {
   BookmarkCheck,
 } from "lucide-react";
 import Link from "next/link";
+import { Share } from "@capacitor/share";
 import { toast } from "sonner";
 import { downloadIcs } from "@/lib/ics";
 import { addRecentlyViewed } from "@/lib/recently-viewed";
@@ -165,6 +166,15 @@ export function OpportunityDetail({
     if (applyUrl) {
       window.open(applyUrl, "_blank");
     }
+  };
+
+  const handleShare = async () => {
+    await Share.share({
+      title,
+      text: `${title}${subtitle ? " - " + subtitle : ""}`,
+      url: applyUrl || window.location.href,
+      dialogTitle: "Share Opportunity",
+    });
   };
 
   const checkQualification = () => {
@@ -369,6 +379,14 @@ export function OpportunityDetail({
               <ExternalLink className="h-4 w-4" /> Apply Now
             </button>
           )}
+
+          <button
+            onClick={handleShare}
+            className="inline-flex items-center gap-2 rounded-xl border border-kk-blue px-6 py-3 text-sm font-semibold text-kk-blue transition-colors hover:bg-kk-blue hover:text-white"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Share Opportunity
+          </button>
 
           {!applyUrl && email && (
             <a
