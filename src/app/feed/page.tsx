@@ -16,6 +16,7 @@ import {
   Shield,
   Clock,
   Flame,
+  RefreshCw,
   Mail,
 } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
@@ -31,6 +32,7 @@ import {
 } from "@/lib/opportunities";
 import { getVerifiedUrls } from "@/lib/verified-urls";
 import Link from "next/link";
+import { Preferences } from "@capacitor/preferences";
 
 const typeIcons: Record<OpportunityType, typeof Briefcase> = {
   job: Briefcase,
@@ -71,10 +73,31 @@ export default function FeedPage() {
 const [opportunityFeed, setOpportunityFeed] = useState<Opportunity[]>([]);
 
 useEffect(() => {
-fetch("/api/opportunities")
-.then(r => r.json())
-.then(setOpportunityFeed)
-.catch(console.error);
+  async function loadOpportunities() {
+    try {
+      const res = await fetch("/api/opportunities");
+      const data = await res.json();
+
+      setOpportunityFeed(data);
+
+      await Preferences.set({
+        key: "opportunities-cache",
+        value: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.log("Offline - loading cached opportunities");
+
+      const cached = await Preferences.get({
+        key: "opportunities-cache",
+      });
+
+      if (cached.value) {
+        setOpportunityFeed(JSON.parse(cached.value));
+      }
+    }
+  }
+
+  loadOpportunities();
 }, []);
 
   const filtered = useMemo(() => {
@@ -108,7 +131,22 @@ fetch("/api/opportunities")
   }, [opportunityFeed]);
 
   // Extract unique categories
-  const categories = useMemo(() => {
+  
+async function refreshFeed() {
+  try {
+    const res = await fetch("/api/opportunities");
+    const data = await res.json();
+    setOpportunityFeed(data);
+    await Preferences.set({
+      key: "offline-opportunities",
+      value: JSON.stringify(data),
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+const categories = useMemo(() => {
     const cats = new Set<string>();
     opportunityFeed.forEach((o) => {
       if (o.category) cats.add(o.category);
@@ -177,7 +215,16 @@ fetch("/api/opportunities")
         </div>
 
         {/* Toolbar */}
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row">
+        
+<div className="mb-6 flex flex-col gap-3 sm:flex-row">
+<button
+  onClick={refreshFeed}
+  className="rounded-xl bg-kk-blue px-4 py-2 text-white font-semibold inline-flex items-center gap-2"
+>
+  <RefreshCw className="h-4 w-4" />
+  Refresh
+</button>
+
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-kk-navy/40" />
             <input
