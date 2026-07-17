@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { eq, and, desc } from "drizzle-orm";
 import { db } from "@/db";
-import { notifications } from "@/db/schema";
+import { notifications, users } from "@/db/schema";
 import { auth } from "@/lib/auth";
 
 export const runtime = "nodejs";
@@ -48,4 +48,30 @@ export async function PATCH(request: Request) {
     .where(and(eq(notifications.id, id), eq(notifications.userId, userId)));
 
   return NextResponse.json({ success: true });
+}
+
+export async function POST(request: Request) {
+  const session = await auth();
+
+  if (!session?.user) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
+
+  const userId = (session.user as { id?: string }).id!;
+  const { token } = await request.json();
+
+  if (!token) {
+    return NextResponse.json({ error: "Token required" }, { status: 400 });
+  }
+
+  await db
+    .update(users)
+    .set({
+      pushToken: token,
+    })
+    .where(eq(users.id, userId));
+
+  return NextResponse.json({
+    success: true,
+  });
 }

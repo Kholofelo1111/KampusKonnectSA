@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Kampus Konnect SA',
   webDir: 'public',
   server: {
-    url: 'https://kampus-konnect-sa-production-ready.vercel.app',
+    url: 'https://kampus.kandktechsolutions.co.za',
     cleartext: false
   }
 };

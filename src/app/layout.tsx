@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import { Providers } from "@/components/Providers";
 import { MobileNav } from "@/components/MobileNav";
+import PushNotificationInit from "@/components/PushNotificationInit";
 
 export const metadata: Metadata = {
   title: "Kampus KonnectSA – AI-Powered Education & Career Platform",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="min-h-screen bg-white text-kk-navy antialiased">
         <Providers>
+          <PushNotificationInit />
           <Navbar />
           {/* pb for mobile bottom nav clearance */}
           <main className="relative pb-20 lg:pb-0">{children}</main>
