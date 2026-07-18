@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586887108703",
+    "project_id": "kampus-konnectsa",
+    "storage_bucket": "kampus-konnectsa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586887108703:android:7b3e81dcbe6397458363ea",
+        "android_client_info": {
+          "package_name": "com.kampuskonnect.sa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCopVyQPPAv_OA9r30zypvIKjgqrv-1o80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
