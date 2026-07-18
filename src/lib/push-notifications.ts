@@ -20,6 +20,7 @@ export async function registerForPushNotifications() {
 
   PushNotifications.addListener("registration", (token: Token) => {
     console.log("FCM Token:", token.value);
+    alert("FCM Token:\n\n"+token.value);
 
     fetch("/api/notifications", {
       method: "POST",
