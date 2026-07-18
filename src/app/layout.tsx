@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import { Providers } from "@/components/Providers";
 import { MobileNav } from "@/components/MobileNav";
+import PushNotificationInit from "@/components/PushNotificationInit";
 
 export const metadata: Metadata = {
   title: "Kampus KonnectSA – AI-Powered Education & Career Platform",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Footer />
           <ChatWidget />
           <MobileNav />
+          <PushNotificationInit />
         </Providers>
           <Analytics />
   </body>
