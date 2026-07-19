@@ -1,4 +1,5 @@
 import { Capacitor } from "@capacitor/core";
+import { FirebaseMessaging } from "@capacitor-firebase/messaging";
 import {
   PushNotifications,
   Token,
@@ -18,8 +19,10 @@ export async function registerForPushNotifications() {
 
   await PushNotifications.register();
 
-  PushNotifications.addListener("registration", (token: Token) => {
+  PushNotifications.addListener("registration", async (token: Token) => {
     console.log("FCM Token:", token.value);
+    await FirebaseMessaging.subscribeToTopic({ topic: "all" });
+    console.log("Subscribed to topic: all");
     alert("FCM Token:\n\n"+token.value);
 
     fetch("/api/notifications", {
