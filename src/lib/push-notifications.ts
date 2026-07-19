@@ -23,12 +23,9 @@ export async function registerForPushNotifications() {
     console.log("FCM Token:", token.value);
     try {
       await FirebaseMessaging.subscribeToTopic({ topic: "all" });
-      alert("Subscribed to topic: all");
     } catch (e) {
-      alert("Subscription failed: " + JSON.stringify(e));
     }
     console.log("Subscribed to topic: all");
-    alert("FCM Token:\n\n"+token.value);
 
     fetch("/api/notifications", {
       method: "POST",
