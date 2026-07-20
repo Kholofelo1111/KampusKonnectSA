@@ -87,6 +87,7 @@ export default function CvBuilderPage() {
   const [downloadError, setDownloadError] = useState<string | null>(null);
 
   function handleDownload() {
+    alert("handleDownload called");
     setDownloadError(null);
     if (!data.fullName.trim()) {
       setDownloadError("Please add your full name before downloading (see Personal Info step).");

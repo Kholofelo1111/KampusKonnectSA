@@ -518,7 +518,7 @@ const FILE_LABEL: Record<TemplateKey, string> = {
   "skills-based": "Skills_Based",
 };
 
-export async function generateCvPdf(data: CvData, template: TemplateKey): Promise<void> {
+export function generateCvPdf(data: CvData, template: TemplateKey): void {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   RENDERERS[template](doc, data);
 
