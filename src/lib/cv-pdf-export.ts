@@ -18,7 +18,7 @@
 // labels in the PDF — which is also better for ATS parsing anyway.
 // ============================================================
 import jsPDF from "jspdf";
-import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Share } from "@capacitor/share";
 import type { CvData, TemplateKey } from "@/components/cv-templates/types";
 
@@ -542,7 +542,8 @@ try {
   const result = await Filesystem.writeFile({
     path: `${safeName}_${FILE_LABEL[template]}.pdf`,
     data: pdfData,
-    directory: Directory.Documents,
+    encoding: Encoding.UTF8,
+    directory: Directory.Data,
     recursive: true,
   });
 
