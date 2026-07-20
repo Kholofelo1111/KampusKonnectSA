@@ -520,7 +520,7 @@ const FILE_LABEL: Record<TemplateKey, string> = {
   "skills-based": "Skills_Based",
 };
 
-export function generateCvPdf(data: CvData, template: TemplateKey): void {
+export async function generateCvPdf(data: CvData, template: TemplateKey): Promise<void> {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   RENDERERS[template](doc, data);
 
@@ -538,17 +538,23 @@ export function generateCvPdf(data: CvData, template: TemplateKey): void {
   
 const pdfData = doc.output("datauristring").split(",")[1];
 
-Filesystem.writeFile({
-  path: `${safeName}_${FILE_LABEL[template]}.pdf`,
-  data: pdfData,
-  directory: Directory.Documents,
-  recursive: true,
-}).then(async (result) => {
+try {
+  const result = await Filesystem.writeFile({
+    path: `${safeName}_${FILE_LABEL[template]}.pdf`,
+    data: pdfData,
+    directory: Directory.Documents,
+    recursive: true,
+  });
+
+  alert("Saved to:\n" + result.uri);
+
   await Share.share({
     title: "CV",
     text: "Your CV is ready.",
     url: result.uri,
   });
-}).catch(console.error);
+} catch (e) {
+  alert("CV Error:\n" + JSON.stringify(e));
+}
 
 }
