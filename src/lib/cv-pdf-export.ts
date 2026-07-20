@@ -521,6 +521,7 @@ const FILE_LABEL: Record<TemplateKey, string> = {
 export function generateCvPdf(data: CvData, template: TemplateKey): void {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   RENDERERS[template](doc, data);
+  alert("PDF rendered");
 
   // Small footer watermark on every page
   const pageCount = doc.getNumberOfPages();
@@ -530,9 +531,11 @@ export function generateCvPdf(data: CvData, template: TemplateKey): void {
     doc.setFontSize(7);
     doc.setTextColor(180, 180, 180);
     doc.text("Generated with Kampus KonnectSA", 15, PAGE_H - 8);
+  if (i === pageCount) alert("Footer done");
   }
 
   const safeName = (data.fullName || "CV").replace(/[^a-z0-9]+/gi, "_");
   
+  alert("About to save PDF");
   doc.save(`${safeName}_${FILE_LABEL[template]}.pdf`);
 }
