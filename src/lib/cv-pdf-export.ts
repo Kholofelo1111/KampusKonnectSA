@@ -542,7 +542,6 @@ try {
   const result = await Filesystem.writeFile({
     path: `${safeName}_${FILE_LABEL[template]}.pdf`,
     data: pdfData,
-    encoding: Encoding.UTF8,
     directory: Directory.Data,
     recursive: true,
   });
@@ -552,7 +551,7 @@ try {
   await Share.share({
     title: "CV",
     text: "Your CV is ready.",
-    url: result.uri,
+    files: [result.uri],
   });
 } catch (e) {
   alert("CV Error:\n" + JSON.stringify(e));
